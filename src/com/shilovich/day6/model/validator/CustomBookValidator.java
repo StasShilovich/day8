@@ -18,7 +18,7 @@ public class CustomBookValidator {
         if (book == null) {
             return false;
         }
-        if (validateTag(book.getTag()) &&
+        if (validateTag(book.getId()) &&
                 validateAuthor(book.getAuthor()) &&
                 validateTitle(book.getTitle()) &&
                 validateYear(book.getYear()) &&
@@ -28,9 +28,10 @@ public class CustomBookValidator {
         return result;
     }
 
-    private boolean validateTag(int tag) {
+    private boolean validateTag(long tag) {
         return tag >= BOTTOM_BORDER_TAG && tag <= TOP_BORDER_TAG;
     }
+
 
     private boolean validateAuthor(String author) {
         return author.length() <= AUTHOR_NAME_LENGTH && !author.isEmpty();

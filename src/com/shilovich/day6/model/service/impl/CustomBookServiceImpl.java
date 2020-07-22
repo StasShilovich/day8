@@ -1,6 +1,5 @@
 package com.shilovich.day6.model.service.impl;
 
-import com.shilovich.day6.connection.MySqlConnection;
 import com.shilovich.day6.exception.DaoException;
 import com.shilovich.day6.exception.ServiceException;
 import com.shilovich.day6.model.dao.impl.CustomBookListDaoImpl;
@@ -9,9 +8,6 @@ import com.shilovich.day6.model.parser.StringToCustomBookParser;
 import com.shilovich.day6.model.service.CustomBookService;
 import com.shilovich.day6.model.validator.CustomBookValidator;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CustomBookServiceImpl implements CustomBookService {
@@ -35,7 +31,7 @@ public class CustomBookServiceImpl implements CustomBookService {
             throw new ServiceException("Book is not valid!");
         }
         try {
-            CustomBookListDaoImpl.getInstance().addBook(customBook);
+            CustomBookListDaoImpl.getInstance().add(customBook);
         } catch (DaoException e) {
             throw new ServiceException(e.getMessage());
         }
@@ -50,7 +46,7 @@ public class CustomBookServiceImpl implements CustomBookService {
             throw new ServiceException("Book is not valid!");
         }
         try {
-            CustomBookListDaoImpl.getInstance().removeBook(customBook);
+            CustomBookListDaoImpl.getInstance().delete(customBook);
         } catch (DaoException e) {
             throw new ServiceException(e.getMessage());
         }
@@ -69,12 +65,12 @@ public class CustomBookServiceImpl implements CustomBookService {
         return book;
     }
 
-    public List<CustomBook> sortBookByTag() throws ServiceException {
-        List<CustomBook> books = new ArrayList<>();
-        try (Connection connection = MySqlConnection.getInstance().getConnection()) {
-            books = CustomBookListDaoImpl.getInstance().sortBookByTag(connection);
-        } catch (DaoException | SQLException e) {
-            throw new ServiceException(e.getMessage());
+    public List<CustomBook> findAll() throws ServiceException {
+        List<CustomBook> books;
+        try {
+            books = CustomBookListDaoImpl.getInstance().findAll();
+        } catch (DaoException e) {
+            throw new ServiceException("Service find all fail!", e);
         }
         return books;
     }

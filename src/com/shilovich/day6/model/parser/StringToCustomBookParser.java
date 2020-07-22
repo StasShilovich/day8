@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class StringToCustomBookParser {
-    private static final int FIELDS_COUNT = 5;
+    private static final int FIELDS_COUNT = 6;
 
     public CustomBook parseToBook(List<String> fields) throws ServiceException {
         CustomBook book = new CustomBook();
@@ -15,18 +15,19 @@ public class StringToCustomBookParser {
             throw new ServiceException("Invalid size of incoming list!");
         }
         int count = 0;
-        int tag = parseToInt(fields.get(count++));
+        Long tag = Long.parseLong(fields.get(count++));
         String author = fields.get(count++);
         String title = fields.get(count++);
-        int year = parseToInt(fields.get(count++));
+        Integer year = parseToInt(fields.get(count++));
         BigDecimal price;
         try {
-            price = new BigDecimal(fields.get(count));
+            price = new BigDecimal(fields.get(count++));
         } catch (NumberFormatException e) {
             throw new ServiceException("Invalid price!");
         }
+        Boolean deleted = Boolean.getBoolean(fields.get(count));
         if (!price.equals(new BigDecimal(0))) {
-            book = new CustomBook(tag, author, title, year, price);
+            book = new CustomBook(tag, author, title, year, price, deleted);
         }
         return book;
     }

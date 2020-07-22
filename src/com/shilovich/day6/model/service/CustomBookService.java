@@ -12,7 +12,7 @@ public interface CustomBookService {
 
     CustomBook findByTag(String tag);
 
-    List<CustomBook> sortBookByTag() throws ServiceException;
+    List<CustomBook> findAll() throws ServiceException;
 
     List<CustomBook> sortBookByAuthor();
 

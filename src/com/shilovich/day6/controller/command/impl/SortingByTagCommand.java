@@ -22,7 +22,7 @@ public class SortingByTagCommand implements ActionCommand<String, List<CustomBoo
     public Map<String, List<CustomBook>> execute(Map<String, String> parameters) {
         List<CustomBook> customBooks = new ArrayList<>();
         try {
-            customBooks = service.sortBookByTag();
+            customBooks = service.findAll();
         } catch (ServiceException e) {
             e.printStackTrace();
         }
