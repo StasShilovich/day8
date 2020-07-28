@@ -45,6 +45,5 @@ public class StringToCustomBookParserTest {
         strings.add("20.2n");
         strings.add("true");
         parser.parseToBook(strings);
-        fail("No exception was thrown!");
     }
 }

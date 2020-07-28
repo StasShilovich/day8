@@ -14,8 +14,4 @@ INSERT Book(author,title,year,price,deleted) VALUES
 ('Albert Camus','The Plague',1947,12.49,0),
 ('Shashi Tharoor','The Great Indian Novel',1989,24.36,0),
 ('Paulo Coelho','The Devil and Miss Prym',2000,9.99,0),
-('Patrick Suskin','Perfume: The Story of a Murderer',1985,10.47,0),
-('Toni Morrison','Jazz',1992,11.83,0),
-('Mark Z. Danielewski','House of Leaves',2000,13.49,0),
-('Fyodor Dostoyevsky','Crime and Punishment',1866,6.99,1),
-('Jonathan Coe','What a Carve Up!',1944,14.89,0);
+('Patrick Suskin','Perfume: The Story of a Murderer',1985,10.47,0);

@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 public class ConnectionManager {
     private static ConnectionManager instance;
     private ResourceBundle resourceBundle;
-    private static final String BUNDLE_NAME = "com\\shilovich\\day6\\resources\\mysql";
+    private static final String BUNDLE_NAME = "resources\\mysql";
 
     public static final String URL = "database.url";
     public static final String USERNAME = "database.username";

@@ -191,6 +191,10 @@ public class CustomBookListDaoImpl implements CustomBookListDao {
         statement.setString(2, book.getTitle());
         statement.setString(3, book.getYear().toString());
         statement.setString(4, book.getPrice().toString());
-        statement.setString(5, book.getDeleted().toString());
+        int deleted = 0;
+        if (book.getDeleted()) {
+            deleted = 1;
+        }
+        statement.setString(5, Integer.toString(deleted));
     }
 }

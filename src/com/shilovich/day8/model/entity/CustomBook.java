@@ -8,7 +8,7 @@ public class CustomBook {
     private String title;
     private Integer year;
     private BigDecimal price;
-    private Boolean deleted;
+    private Boolean deleted = false;
 
     public CustomBook() {
     }
